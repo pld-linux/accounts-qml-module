@@ -1,0 +1,25 @@
+From ef02ba470f4e915248e71de562ed105c88485f67 Mon Sep 17 00:00:00 2001
+From: Alberto Mardegan <mardy@users.sourceforge.net>
+Date: Tue, 9 Jan 2018 18:22:40 +0300
+Subject: [PATCH] Build: add a CONFIG+=no_docs option to skip building
+ documentation
+
+---
+ accounts-qml-module.pro | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/accounts-qml-module.pro b/accounts-qml-module.pro
+index 236366b..1e1d62c 100644
+--- a/accounts-qml-module.pro
++++ b/accounts-qml-module.pro
+@@ -1,6 +1,6 @@
+ include(common-vars.pri)
+ include(common-project-config.pri)
+-include(doc/doc.pri)
++!CONFIG(no_docs): include(doc/doc.pri)
+ 
+ TEMPLATE = subdirs
+ CONFIG += ordered
+-- 
+2.24.1
+

@@ -1,0 +1,32 @@
+From a7716cdc2702dc754f10e72918558a3fc7ccc461 Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Sat, 28 Oct 2023 18:23:18 +0200
+Subject: [PATCH] Use C++17 when building for Qt6
+
+---
+ common-project-config.pri | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/common-project-config.pri b/common-project-config.pri
+index 8f689d5..9e5f69e 100644
+--- a/common-project-config.pri
++++ b/common-project-config.pri
+@@ -6,8 +6,13 @@
+ QMAKE_CXXFLAGS += -Werror -Wno-write-strings
+ # Disable RTTI
+ QMAKE_CXXFLAGS += -fno-exceptions -fno-rtti
+-# Use C++11
+-QMAKE_CXXFLAGS += -std=c++11
++
++equals(QT_MAJOR_VERSION, 6) {
++    QMAKE_CXXFLAGS += -std=c++17
++} else {
++    QMAKE_CXXFLAGS += -std=c++11
++}
++
+ 
+ TOP_SRC_DIR     = $$PWD
+ TOP_BUILD_DIR   = $${TOP_SRC_DIR}/$${BUILD_DIR}
+-- 
+GitLab
+

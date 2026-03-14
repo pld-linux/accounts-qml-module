@@ -1,0 +1,27 @@
+From 0958edaf69789889ba9a88ef4c691a4009908b09 Mon Sep 17 00:00:00 2001
+From: Alberto Mardegan <mardy@users.sourceforge.net>
+Date: Thu, 16 Dec 2021 22:55:28 +0300
+Subject: [PATCH] examples: rename Ubuntu.Components to Lomiri.Components
+
+---
+ examples/ubuntu-sdk-view.qml | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/examples/ubuntu-sdk-view.qml b/examples/ubuntu-sdk-view.qml
+index 935a7f3..2b53125 100644
+--- a/examples/ubuntu-sdk-view.qml
++++ b/examples/ubuntu-sdk-view.qml
+@@ -15,8 +15,8 @@
+  */
+ 
+ import QtQuick 2.0
+-import Ubuntu.Components 0.1
+-import Ubuntu.Components.ListItems 0.1 as ListItem
++import Lomiri.Components 0.1
++import Lomiri.Components.ListItems 0.1 as ListItem
+ import Ubuntu.OnlineAccounts 0.1
+ 
+ MainView {
+-- 
+GitLab
+

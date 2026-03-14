@@ -1,0 +1,455 @@
+From da3496e54cfa6e35020695a390c9eee422f51c78 Mon Sep 17 00:00:00 2001
+From: Guido Berhoerster <guido+ubports@berhoerster.name>
+Date: Tue, 20 Sep 2022 08:44:11 +0200
+Subject: [PATCH] Rename QML plugin to SSO.OnlineAccounts
+
+---
+ doc/index.qdoc                |  2 +-
+ examples/create-account.qml   |  2 +-
+ examples/simple-view.qml      |  2 +-
+ examples/ubuntu-sdk-view.qml  |  2 +-
+ src/account-service-model.cpp |  2 +-
+ src/account-service.cpp       |  2 +-
+ src/account.cpp               |  2 +-
+ src/accounts.qdoc             |  4 +--
+ src/application-model.cpp     |  2 +-
+ src/application.cpp           |  2 +-
+ src/credentials.cpp           |  2 +-
+ src/manager.cpp               |  2 +-
+ src/provider-model.cpp        |  2 +-
+ src/src.pro                   |  2 +-
+ tests/tst_plugin.cpp          | 54 +++++++++++++++++------------------
+ 15 files changed, 42 insertions(+), 42 deletions(-)
+
+diff --git a/doc/index.qdoc b/doc/index.qdoc
+index 9de17ce..d5aa26f 100644
+--- a/doc/index.qdoc
++++ b/doc/index.qdoc
+@@ -28,6 +28,6 @@ deployed, with different scopes, UI flows and security policies, it's
+ unpractical to present here a tutorial or a developer guide: for that, the
+ developer is invited to consult the documentation provided by the SDK in use.
+ 
+-This pages contain the reference documentation for the \l{Ubuntu OnlineAccounts}{API} and \l{Manifest files}{manifest files}
++This pages contain the reference documentation for the \l{Accounts SSO OnlineAccounts}{API} and \l{Manifest files}{manifest files}
+ used by this module.
+  */
+diff --git a/examples/create-account.qml b/examples/create-account.qml
+index 9bc9f12..339e7f4 100644
+--- a/examples/create-account.qml
++++ b/examples/create-account.qml
+@@ -15,7 +15,7 @@
+  */
+ 
+ import QtQuick 2.0
+-import Ubuntu.OnlineAccounts 0.1
++import SSO.OnlineAccounts 0.1
+ 
+ Rectangle {
+     width: 400
+diff --git a/examples/simple-view.qml b/examples/simple-view.qml
+index 69bc6f1..bf2246a 100644
+--- a/examples/simple-view.qml
++++ b/examples/simple-view.qml
+@@ -15,7 +15,7 @@
+  */
+ 
+ import QtQuick 2.0
+-import Ubuntu.OnlineAccounts 0.1
++import SSO.OnlineAccounts 0.1
+ 
+ Rectangle {
+     width: 400
+diff --git a/examples/ubuntu-sdk-view.qml b/examples/ubuntu-sdk-view.qml
+index 2b53125..5d9dd6e 100644
+--- a/examples/ubuntu-sdk-view.qml
++++ b/examples/ubuntu-sdk-view.qml
+@@ -17,7 +17,7 @@
+ import QtQuick 2.0
+ import Lomiri.Components 0.1
+ import Lomiri.Components.ListItems 0.1 as ListItem
+-import Ubuntu.OnlineAccounts 0.1
++import SSO.OnlineAccounts 0.1
+ 
+ MainView {
+     width: units.gu(60)
+diff --git a/src/account-service-model.cpp b/src/account-service-model.cpp
+index 20a445c..600127b 100644
+--- a/src/account-service-model.cpp
++++ b/src/account-service-model.cpp
+@@ -435,7 +435,7 @@ void AccountServiceModelPrivate::onAccountServiceEnabled(bool enabled)
+ 
+ /*!
+  * \qmltype AccountServiceModel
+- * \inqmlmodule Ubuntu.OnlineAccounts 0.1
++ * \inqmlmodule SSO.OnlineAccounts 0.1
+  * \ingroup Ubuntu
+  *
+  * \brief A model of the user's Online Accounts
+diff --git a/src/account-service.cpp b/src/account-service.cpp
+index 81ad155..fc98db1 100644
+--- a/src/account-service.cpp
++++ b/src/account-service.cpp
+@@ -85,7 +85,7 @@ void AccountService::syncIfDesired()
+ 
+ /*!
+  * \qmltype AccountService
+- * \inqmlmodule Ubuntu.OnlineAccounts 0.1
++ * \inqmlmodule SSO.OnlineAccounts 0.1
+  * \ingroup Ubuntu
+  *
+  * \brief Represents an instance of a service in an Online Accounts
+diff --git a/src/account.cpp b/src/account.cpp
+index 7212b7a..fb1a3f6 100644
+--- a/src/account.cpp
++++ b/src/account.cpp
+@@ -29,7 +29,7 @@ using namespace OnlineAccounts;
+ 
+ /*!
+  * \qmltype Account
+- * \inqmlmodule Ubuntu.OnlineAccounts 0.1
++ * \inqmlmodule SSO.OnlineAccounts 0.1
+  * \ingroup Ubuntu
+  *
+  * \brief Represents an instance of an online account.
+diff --git a/src/accounts.qdoc b/src/accounts.qdoc
+index c6a887b..0318e71 100644
+--- a/src/accounts.qdoc
++++ b/src/accounts.qdoc
+@@ -15,7 +15,7 @@
+  */
+ 
+ /*!
+-    \qmlmodule Ubuntu.OnlineAccounts 0.1
++    \qmlmodule SSO.OnlineAccounts 0.1
+ 
+-    \title Ubuntu OnlineAccounts
++    \title SSO.OnlineAccounts
+ */
+diff --git a/src/application-model.cpp b/src/application-model.cpp
+index eadc330..c10b462 100644
+--- a/src/application-model.cpp
++++ b/src/application-model.cpp
+@@ -27,7 +27,7 @@ using namespace OnlineAccounts;
+ 
+ /*!
+  * \qmltype ApplicationModel
+- * \inqmlmodule Ubuntu.OnlineAccounts 0.1
++ * \inqmlmodule SSO.OnlineAccounts 0.1
+  * \ingroup Ubuntu
+  *
+  * \brief A model of the applications using online accounts.
+diff --git a/src/application.cpp b/src/application.cpp
+index f2b3466..babc5ce 100644
+--- a/src/application.cpp
++++ b/src/application.cpp
+@@ -24,7 +24,7 @@ using namespace OnlineAccounts;
+ 
+ /*!
+  * \qmltype Application
+- * \inqmlmodule Ubuntu.OnlineAccounts 0.1
++ * \inqmlmodule SSO.OnlineAccounts 0.1
+  * \ingroup Ubuntu
+  *
+  * \brief Represents a client application of Online Accounts.
+diff --git a/src/credentials.cpp b/src/credentials.cpp
+index 19234c2..4a4d659 100644
+--- a/src/credentials.cpp
++++ b/src/credentials.cpp
+@@ -24,7 +24,7 @@ using namespace OnlineAccounts;
+ 
+ /*!
+  * \qmltype Credentials
+- * \inqmlmodule Ubuntu.OnlineAccounts 0.1
++ * \inqmlmodule SSO.OnlineAccounts 0.1
+  * \ingroup Ubuntu
+  *
+  * \brief Holds the account's credentials
+diff --git a/src/manager.cpp b/src/manager.cpp
+index e91cc84..7145168 100644
+--- a/src/manager.cpp
++++ b/src/manager.cpp
+@@ -39,7 +39,7 @@ QSharedPointer<Accounts::Manager> SharedManager::instance()
+ 
+ /*!
+  * \qmltype Manager
+- * \inqmlmodule Ubuntu.OnlineAccounts 0.1
++ * \inqmlmodule SSO.OnlineAccounts 0.1
+  * \ingroup Ubuntu
+  *
+  * \brief The account manager
+diff --git a/src/provider-model.cpp b/src/provider-model.cpp
+index 0646c2c..88a4db2 100644
+--- a/src/provider-model.cpp
++++ b/src/provider-model.cpp
+@@ -28,7 +28,7 @@ using namespace OnlineAccounts;
+ 
+ /*!
+  * \qmltype ProviderModel
+- * \inqmlmodule Ubuntu.OnlineAccounts 0.1
++ * \inqmlmodule SSO.OnlineAccounts 0.1
+  * \ingroup Ubuntu
+  *
+  * \brief A model of the account providers
+diff --git a/src/src.pro b/src/src.pro
+index abfc851..2873593 100644
+--- a/src/src.pro
++++ b/src/src.pro
+@@ -3,7 +3,7 @@ include(../common-project-config.pri)
+ TEMPLATE = lib
+ TARGET = Accounts
+ 
+-API_URI = "Ubuntu.OnlineAccounts"
++API_URI = "SSO.OnlineAccounts"
+ 
+ DESTDIR = $$replace(API_URI, \\., /)
+ 
+diff --git a/tests/tst_plugin.cpp b/tests/tst_plugin.cpp
+index f405954..0ba5df8 100644
+--- a/tests/tst_plugin.cpp
++++ b/tests/tst_plugin.cpp
+@@ -130,7 +130,7 @@ void PluginTest::testLoadPlugin()
+ {
+     QQmlEngine engine;
+     QQmlComponent component(&engine);
+-    component.setData("import Ubuntu.OnlineAccounts 0.1\n"
++    component.setData("import SSO.OnlineAccounts 0.1\n"
+                       "AccountServiceModel {}",
+                       QUrl());
+     QObject *object = component.create();
+@@ -144,7 +144,7 @@ void PluginTest::testEmptyModel()
+ 
+     QQmlEngine engine;
+     QQmlComponent component(&engine);
+-    component.setData("import Ubuntu.OnlineAccounts 0.1\n"
++    component.setData("import SSO.OnlineAccounts 0.1\n"
+                       "AccountServiceModel {}",
+                       QUrl());
+     QObject *object = component.create();
+@@ -221,7 +221,7 @@ void PluginTest::testModel()
+ 
+     QQmlEngine engine;
+     QQmlComponent component(&engine);
+-    component.setData("import Ubuntu.OnlineAccounts 0.1\n"
++    component.setData("import SSO.OnlineAccounts 0.1\n"
+                       "AccountServiceModel {}",
+                       QUrl());
+     QObject *object = component.create();
+@@ -376,7 +376,7 @@ void PluginTest::testModelSignals()
+ 
+     QQmlEngine engine;
+     QQmlComponent component(&engine);
+-    component.setData("import Ubuntu.OnlineAccounts 0.1\n"
++    component.setData("import SSO.OnlineAccounts 0.1\n"
+                       "AccountServiceModel {}",
+                       QUrl());
+     QObject *object = component.create();
+@@ -541,7 +541,7 @@ void PluginTest::testModelDisplayName()
+ 
+     QQmlEngine engine;
+     QQmlComponent component(&engine);
+-    component.setData("import Ubuntu.OnlineAccounts 0.1\n"
++    component.setData("import SSO.OnlineAccounts 0.1\n"
+                       "AccountServiceModel {\n"
+                       "  includeDisabled: true\n"
+                       "}",
+@@ -609,7 +609,7 @@ void PluginTest::testProviderModel()
+ 
+     QQmlEngine engine;
+     QQmlComponent component(&engine);
+-    component.setData("import Ubuntu.OnlineAccounts 0.1\n"
++    component.setData("import SSO.OnlineAccounts 0.1\n"
+                       "ProviderModel {}",
+                       QUrl());
+     QObject *object = component.create();
+@@ -652,7 +652,7 @@ void PluginTest::testProviderModelWithApplication()
+ 
+     QQmlEngine engine;
+     QQmlComponent component(&engine);
+-    component.setData("import Ubuntu.OnlineAccounts 0.1\n"
++    component.setData("import SSO.OnlineAccounts 0.1\n"
+                       "ProviderModel {\n"
+                       "  applicationId: \"mailer\"\n"
+                       "}",
+@@ -709,7 +709,7 @@ void PluginTest::testAccountService()
+     QQmlEngine engine;
+     engine.rootContext()->setContextProperty("accountService1", accountService1);
+     QQmlComponent component(&engine);
+-    component.setData("import Ubuntu.OnlineAccounts 0.1\n"
++    component.setData("import SSO.OnlineAccounts 0.1\n"
+                       "AccountService { objectHandle: accountService1 }",
+                       QUrl());
+     QObject *qmlObject = component.create();
+@@ -811,7 +811,7 @@ void PluginTest::testAccountServiceUpdate()
+     QQmlEngine engine;
+     engine.rootContext()->setContextProperty("accountService", accountService);
+     QQmlComponent component(&engine);
+-    component.setData("import Ubuntu.OnlineAccounts 0.1\n"
++    component.setData("import SSO.OnlineAccounts 0.1\n"
+                       "AccountService { objectHandle: accountService }",
+                       QUrl());
+     QObject *qmlObject = component.create();
+@@ -948,7 +948,7 @@ void PluginTest::testAuthentication()
+     QQmlEngine engine;
+     engine.rootContext()->setContextProperty("accountService1", accountService1);
+     QQmlComponent component(&engine);
+-    component.setData("import Ubuntu.OnlineAccounts 0.1\n"
++    component.setData("import SSO.OnlineAccounts 0.1\n"
+                       "AccountService {\n"
+                       "  objectHandle: accountService1\n"
+                       "  function go() {\n"
+@@ -1028,7 +1028,7 @@ void PluginTest::testAuthenticationErrors()
+     QQmlEngine engine;
+     engine.rootContext()->setContextProperty("accountService1", accountService1);
+     QQmlComponent component(&engine);
+-    component.setData("import Ubuntu.OnlineAccounts 0.1\n"
++    component.setData("import SSO.OnlineAccounts 0.1\n"
+                       "AccountService {\n"
+                       "  objectHandle: accountService1\n"
+                       "  function go() {\n"
+@@ -1087,7 +1087,7 @@ void PluginTest::testAuthenticationDeleted()
+     QQmlEngine engine;
+     engine.rootContext()->setContextProperty("accountService1", accountService1);
+     QQmlComponent component(&engine);
+-    component.setData("import Ubuntu.OnlineAccounts 0.1\n"
++    component.setData("import SSO.OnlineAccounts 0.1\n"
+                       "AccountService { objectHandle: accountService1 }",
+                       QUrl());
+     QObject *qmlObject = component.create();
+@@ -1147,7 +1147,7 @@ void PluginTest::testAuthenticationCancel()
+     QQmlEngine engine;
+     engine.rootContext()->setContextProperty("accountService1", accountService1);
+     QQmlComponent component(&engine);
+-    component.setData("import Ubuntu.OnlineAccounts 0.1\n"
++    component.setData("import SSO.OnlineAccounts 0.1\n"
+                       "AccountService { objectHandle: accountService1 }",
+                       QUrl());
+     QObject *qmlObject = component.create();
+@@ -1209,7 +1209,7 @@ void PluginTest::testAuthenticationWithCredentials()
+     QQmlEngine engine;
+     engine.rootContext()->setContextProperty("accountService", accountService);
+     QQmlComponent component(&engine);
+-    component.setData("import Ubuntu.OnlineAccounts 0.1\n"
++    component.setData("import SSO.OnlineAccounts 0.1\n"
+                       "AccountService {\n"
+                       " id: account\n"
+                       " autoSync: false\n"
+@@ -1290,7 +1290,7 @@ void PluginTest::testAuthenticationMethods()
+     QQmlEngine engine;
+     engine.rootContext()->setContextProperty("accountService1", accountService1);
+     QQmlComponent component(&engine);
+-    component.setData("import Ubuntu.OnlineAccounts 0.1\n"
++    component.setData("import SSO.OnlineAccounts 0.1\n"
+                       "AccountService {\n"
+                       "  objectHandle: accountService1\n"
+                       "}",
+@@ -1389,7 +1389,7 @@ void PluginTest::testManagerCreate()
+ {
+     QQmlEngine engine;
+     QQmlComponent component(&engine);
+-    component.setData("import Ubuntu.OnlineAccounts 0.1\n"
++    component.setData("import SSO.OnlineAccounts 0.1\n"
+                       "Account { objectHandle: Manager.createAccount(\"cool\") }",
+                       QUrl());
+     QObject *qmlObject = component.create();
+@@ -1419,7 +1419,7 @@ void PluginTest::testManagerLoad()
+     QQmlEngine engine;
+     engine.rootContext()->setContextProperty("account1id", uint(account1->id()));
+     QQmlComponent component(&engine);
+-    component.setData("import Ubuntu.OnlineAccounts 0.1\n"
++    component.setData("import SSO.OnlineAccounts 0.1\n"
+                       "Account { objectHandle: Manager.loadAccount(account1id) }",
+                       QUrl());
+     QObject *qmlObject = component.create();
+@@ -1441,7 +1441,7 @@ void PluginTest::testAccountInvalid()
+ {
+     QQmlEngine engine;
+     QQmlComponent component(&engine);
+-    component.setData("import Ubuntu.OnlineAccounts 0.1\n"
++    component.setData("import SSO.OnlineAccounts 0.1\n"
+                       "Account {}",
+                       QUrl());
+     QObject *qmlObject = component.create();
+@@ -1478,7 +1478,7 @@ void PluginTest::testAccount()
+ 
+     QQmlEngine engine;
+     QQmlComponent component(&engine);
+-    component.setData("import Ubuntu.OnlineAccounts 0.1\n"
++    component.setData("import SSO.OnlineAccounts 0.1\n"
+                       "Account { objectHandle: Manager.createAccount(\"cool\") }",
+                       QUrl());
+     QObject *qmlObject = component.create();
+@@ -1543,7 +1543,7 @@ void PluginTest::testCredentials()
+ {
+     QQmlEngine engine;
+     QQmlComponent component(&engine);
+-    component.setData("import Ubuntu.OnlineAccounts 0.1\n"
++    component.setData("import SSO.OnlineAccounts 0.1\n"
+                       "Credentials {"
+                       " userName: \"Smart User\"\n"
+                       " secret: \"Valuable password\"\n"
+@@ -1606,7 +1606,7 @@ void PluginTest::testCredentials()
+     QVERIFY(credentialsId != 0);
+ 
+     engine.rootContext()->setContextProperty("credsId", credentialsId);
+-    component.setData("import Ubuntu.OnlineAccounts 0.1\n"
++    component.setData("import SSO.OnlineAccounts 0.1\n"
+                       "Credentials { credentialsId: credsId }",
+                       QUrl());
+     QObject *qmlObject2 = component.create();
+@@ -1686,7 +1686,7 @@ void PluginTest::testAccountCredentialsRemoval()
+     Q_FOREACH (AccountService *accountService, services) {
+         engine.rootContext()->setContextProperty("accountService", accountService);
+         QQmlComponent component(&engine);
+-        component.setData("import Ubuntu.OnlineAccounts 0.1\n"
++        component.setData("import SSO.OnlineAccounts 0.1\n"
+                           "AccountService {\n"
+                           " id: account\n"
+                           " objectHandle: accountService\n"
+@@ -1723,7 +1723,7 @@ void PluginTest::testAccountCredentialsRemoval()
+ 
+     QQmlComponent accountComponent(&engine);
+     engine.rootContext()->setContextProperty("aid", accountId);
+-    accountComponent.setData("import Ubuntu.OnlineAccounts 0.1\n"
++    accountComponent.setData("import SSO.OnlineAccounts 0.1\n"
+                              "Account {\n"
+                              "  objectHandle: Manager.loadAccount(aid)\n"
+                              "  function removeAccount1() {\n"
+@@ -1759,7 +1759,7 @@ void PluginTest::testAccountCredentialsRemoval()
+     Q_FOREACH (uint credentialsId, credentials) {
+         engine.rootContext()->setContextProperty("credsId", credentialsId);
+         QQmlComponent component(&engine);
+-        component.setData("import Ubuntu.OnlineAccounts 0.1\n"
++        component.setData("import SSO.OnlineAccounts 0.1\n"
+                           "Credentials { credentialsId: credsId }",
+                           QUrl());
+         QObject *qmlCredentials = component.create();
+@@ -1792,7 +1792,7 @@ void PluginTest::testAccountServiceCredentials()
+     QQmlEngine engine;
+     engine.rootContext()->setContextProperty("accountService", accountService);
+     QQmlComponent component(&engine);
+-    component.setData("import Ubuntu.OnlineAccounts 0.1\n"
++    component.setData("import SSO.OnlineAccounts 0.1\n"
+                       "AccountService {\n"
+                       " id: account\n"
+                       " objectHandle: accountService\n"
+@@ -1852,7 +1852,7 @@ void PluginTest::testApplicationModel()
+ {
+     QQmlEngine engine;
+     QQmlComponent component(&engine);
+-    component.setData("import Ubuntu.OnlineAccounts 0.1\n"
++    component.setData("import SSO.OnlineAccounts 0.1\n"
+                       "ApplicationModel {}",
+                       QUrl());
+     QObject *qmlModel = component.create();
+@@ -1927,7 +1927,7 @@ void PluginTest::testUiPolicy()
+ 
+     QQmlEngine engine;
+     QQmlComponent component(&engine);
+-    component.setData("import Ubuntu.OnlineAccounts 0.1\n"
++    component.setData("import SSO.OnlineAccounts 0.1\n"
+                       "AccountService {\n"
+                       "  property var value: " + name.toUtf8() + "\n"
+                       "}",
+-- 
+GitLab
+

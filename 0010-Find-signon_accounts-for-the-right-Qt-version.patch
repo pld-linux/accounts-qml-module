@@ -1,0 +1,56 @@
+From 05e79ebbbf3784a87f72b7be571070125c10dfe3 Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Sat, 28 Oct 2023 18:24:20 +0200
+Subject: [PATCH] Find signon/accounts for the right Qt version
+
+---
+ src/src.pro          | 4 ++--
+ tests/mock/mock.pro  | 2 +-
+ tests/tst_plugin.pro | 4 ++--
+ 3 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/src/src.pro b/src/src.pro
+index 685fb7e..4ec4b77 100644
+--- a/src/src.pro
++++ b/src/src.pro
+@@ -18,8 +18,8 @@ QT += qml
+ QMAKE_LFLAGS += $$QMAKE_LFLAGS_NOUNDEF
+ 
+ PKGCONFIG += \
+-    accounts-qt5 \
+-    libsignon-qt5
++    accounts-qt$$QT_MAJOR_VERSION \
++    libsignon-qt$$QT_MAJOR_VERSION
+ 
+ CONFIG(debug) {
+     DEFINES += \
+diff --git a/tests/mock/mock.pro b/tests/mock/mock.pro
+index cea48d7..df5e6c7 100644
+--- a/tests/mock/mock.pro
++++ b/tests/mock/mock.pro
+@@ -1,6 +1,6 @@
+ include(../../common-project-config.pri)
+ 
+-TARGET = signon-qt5
++TARGET = signon-qt$$QT_MAJOR_VERSION
+ TEMPLATE = lib
+ 
+ CONFIG += \
+diff --git a/tests/tst_plugin.pro b/tests/tst_plugin.pro
+index 4fd469b..28296eb 100644
+--- a/tests/tst_plugin.pro
++++ b/tests/tst_plugin.pro
+@@ -14,8 +14,8 @@ QT += \
+     testlib
+ 
+ PKGCONFIG += \
+-    accounts-qt5 \
+-    libsignon-qt5
++    accounts-qt$$QT_MAJOR_VERSION \
++    libsignon-qt$$QT_MAJOR_VERSION
+ 
+ SOURCES += \
+     tst_plugin.cpp
+-- 
+GitLab
+

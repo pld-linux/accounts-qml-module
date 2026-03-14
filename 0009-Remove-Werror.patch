@@ -1,0 +1,28 @@
+From 09a8a8a2325ce57318180076e6bb8f6147f0d830 Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Sat, 28 Oct 2023 18:24:01 +0200
+Subject: [PATCH] Remove -Werror
+
+It breaks the Qt6 build
+
+It should never be enabled by default anyway
+---
+ common-project-config.pri | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/common-project-config.pri b/common-project-config.pri
+index 9e5f69e..de5385f 100644
+--- a/common-project-config.pri
++++ b/common-project-config.pri
+@@ -3,7 +3,7 @@
+ #-----------------------------------------------------------------------------
+ 
+ # we don't like warnings...
+-QMAKE_CXXFLAGS += -Werror -Wno-write-strings
++QMAKE_CXXFLAGS += -Wno-write-strings
+ # Disable RTTI
+ QMAKE_CXXFLAGS += -fno-exceptions -fno-rtti
+ 
+-- 
+GitLab
+
