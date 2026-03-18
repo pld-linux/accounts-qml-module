@@ -1,9 +1,3 @@
-#
-# Please do not update/rebuild/touch this package before asking first
-# to mikala and/or neoclust and/or daviddavid
-# This package is part of the KDE Stack.
-#
-
 Summary:	QML module to manage the user's online accounts
 Name:		accounts-qml-module
 Version:	0.7
@@ -26,6 +20,15 @@ Patch7:		0007-Generate-plugin.qmltypes-during-build.patch
 Patch8:		0008-Use-C++17-when-building-for-Qt6.patch
 Patch9:		0009-Remove-Werror.patch
 Patch10:	0010-Find-signon_accounts-for-the-right-Qt-version.patch
+BuildRequires:	Qt6Core-devel
+BuildRequires:	Qt6Gui-devel
+BuildRequires:	Qt6Help-devel
+BuildRequires:	Qt6Network-devel
+BuildRequires:	Qt6Qml-devel
+BuildRequires:	Qt6Test-devel
+BuildRequires:	Qt6Xml-devel
+BuildRequires:	libaccounts-qt6-devel
+BuildRequires:	libsignon-qt6-devel
 BuildRequires:	rpmbuild(macros) >= 1.164
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
@@ -33,23 +36,10 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		qt6dir		%{_libdir}/qt6
 
-
-#BuildRequires:	cmake(AccountsQt6)
-#BuildRequires:	cmake(Qt6Core)
-#BuildRequires:	cmake(Qt6Gui)
-#BuildRequires:	cmake(Qt6Help)
-#BuildRequires:	cmake(Qt6Network)
-#BuildRequires:	cmake(Qt6Qml)
-#BuildRequires:	cmake(Qt6Test)
-#BuildRequires:	cmake(Qt6Xml)
-#BuildRequires:	cmake(SignOnQt6)
-
 %description
 This QML module provides an API to manage the user's online accounts
 and get their authentication data. It's a tiny wrapper around the
 Qt-based APIs of libaccounts-qt and libsignon-qt.
-
-#------------------------------------------------------------------------------
 
 %package doc
 Summary:	Documentation for %{name}
@@ -62,9 +52,6 @@ accounts-qml-module.
 %files doc
 %defattr(644,root,root,755)
 %doc %{_datadir}/%{name}/
-
-
-#------------------------------------------------------------------------------
 
 %prep
 %setup -q -n %{name}-VERSION_%{version}
